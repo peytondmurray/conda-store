@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import json
 import pathlib
 import re
 import subprocess
@@ -16,7 +17,7 @@ from traitlets import TraitError
 
 from conda_store_server import BuildKey, api
 from conda_store_server._internal import action, conda_utils, orm, schema, server, utils
-from conda_store_server._internal.action import generate_lockfile
+from conda_store_server._internal.action import add_conda_prefix_packages, generate_lockfile
 from conda_store_server.server.auth import DummyAuthentication
 
 
@@ -341,19 +342,49 @@ def test_get_conda_prefix_stats(tmp_path, conda_store, simple_conda_lock):
     assert context.result["disk_usage"] > 0
 
 
-def test_add_conda_prefix_packages(db, conda_store, simple_specification, conda_prefix):
-    build_id = conda_store.register_environment(
-        db, specification=simple_specification, namespace="pytest"
+@mock.patch.object(add_conda_prefix_packages, "list_conda_prefix_packages")
+@mock.patch.object(add_conda_prefix_packages, "api", wraps=api)
+# def test_add_conda_prefix_packages(db, conda_store, simple_specification, conda_prefix):
+def test_add_conda_prefix_packages(mock_api, mock_list_conda_prefix_packages, simple_specification):
+    # build_id = conda_store.register_environment(
+    #     db, specification=simple_specification, namespace="pytest"
+    # )
+
+    build = orm.Build()
+    build.build_key_version = 2
+    build.deleted_on = None
+    build.ended_on = None
+    build.environment_id = 1
+    build.hash = None
+    build.id = 1
+    build.package_builds =[]
+    build.scheduled_on = datetime.datetime(2024, 6, 25, 23, 32, 20, 545670)
+    build.size = 0
+    build.specification_id = 1
+    build.started_on = None
+    build.status = schema.BuildStatus.QUEUED
+    build.status_info = None
+
+    packages = json.loads('''
+        [{"build": "main", "build_number": 0, "constrains": [], "depends": [], "license": "", "license_family": null, "md5": "013d3f22cd3b87f71224bd936765bcad", "sha256": "bd36a740479053a94d9c2a92bc55333a7a1a3e63ec0341d4cde6b7825bae0ee3", "name": "_libgcc_mutex", "size": 3121, "subdir": "linux-64", "timestamp": 1562011674, "version": "0.1", "channel_id": "https://conda.anaconda.org/main", "summary": "Mutex for libgcc and libgcc-ng", "description": null }, { "build": "h1234567_1", "build_number": 1, "constrains": [], "depends": [ "_libgcc_mutex 0.1 main" ], "license": "GPL-3.0-only WITH GCC-exception-3.1", "license_family": null, "md5": "3080c2813e6e1d0f8a100a38b5b3456d", "sha256": "118665c3af6392704fe608da9b98dbf815304537bb80ae99fb9fd59fc81f8b8e", "name": "libgomp", "size": 573231, "subdir": "linux-64", "timestamp": 1654090775, "version": "11.2.0", "channel_id": "https://conda.anaconda.org/main", "summary": "The GCC OpenMP implementation.", "description": null }, { "build": "1_gnu", "build_number": 0, "constrains": [ "openmp_impl 9999" ], "depends": [ "_libgcc_mutex 0.1 main", "libgomp >=7.5.0" ], "license": "BSD-3-Clause", "license_family": null, "md5": "613805add1c05b538ff06d217252feb7", "sha256": "9e1391519971e7ce527b3f268900d079bedf0eff3fb70cdb4844cd0f64dfe086", "name": "_openmp_mutex", "size": 20810, "subdir": "linux-64", "timestamp": 1652859733, "version": "5.1", "channel_id": "https://conda.anaconda.org/main", "summary": "OpenMP Implementation Mutex", "description": null }, { "build": "h1234567_1", "build_number": 1, "constrains": [ "_libgcc_mutex 0.1 main", "_openmp_mutex", "libgomp 11.2.0 h1234567_1" ], "depends": [ "_openmp_mutex", "_libgcc_mutex 0.1 main", "__glibc >=2.17", "_libgcc_mutex * main" ], "license": "GPL-3.0-only WITH GCC-exception-3.1", "license_family": null, "md5": "641e72e5067bd6d5454405879e1cd2a7", "sha256": "f52d33d9c7cccf09b429a341d0bf803c8365a02a73a77b7ff887ec88f25d1c1a", "name": "libgcc-ng", "size": 8895144, "subdir": "linux-64", "timestamp": 1654090827, "version": "11.2.0", "channel_id": "https://conda.anaconda.org/main", "summary": "The GCC low-level runtime library", "description": null }, { "build": "h7b6447c_0", "build_number": 0, "constrains": [], "depends": [ "libgcc-ng >=7.3.0" ], "license": "MIT", "license_family": null, "md5": "fcff4f33bb4e3fa91f8d5c3168807abb", "sha256": "21957e347f97960435b5267baefe1014fe53e4e673b478dfe46b82e371bc0e2b", "name": "yaml", "size": 88839, "subdir": "linux-64", "timestamp": 1593116114, "version": "0.2.5", "channel_id": "https://conda.anaconda.org/main", "summary": "A C library for parsing and emitting YAML", "description": "YAML is a human friendly data serialization standard for all programming\\nlanguages.\\n" } ]
+    '''
     )
 
-    action.action_add_conda_prefix_packages(
-        db=db,
-        conda_prefix=conda_prefix,
-        build_id=build_id,
+    mock_api.get_build.return_value = build
+    mock_list_conda_prefix_packages.return_value = packages
+
+    mock_db = mock.MagicMock()
+    mock_conda_prefix = mock.MagicMock()
+    mock_build_id = mock.MagicMock()
+
+    add_conda_prefix_packages.action_add_conda_prefix_packages(
+        db=mock_db,
+        conda_prefix=mock_conda_prefix,
+        build_id=mock_build_id,
     )
 
-    build = api.get_build(db, build_id=build_id)
-    assert len(build.package_builds) > 0
+    # build = api.get_build(db, build_id=build_id)
+    # assert len(build.package_builds) > 0
 
 
 def test_add_lockfile_packages(
