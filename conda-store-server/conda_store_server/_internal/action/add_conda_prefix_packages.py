@@ -60,8 +60,6 @@ def action_add_conda_prefix_packages(
     conda_prefix: pathlib.Path,
     build_id: int,
 ):
-
-    breakpoint()
     build = api.get_build(db, build_id=build_id)
     packages = list_conda_prefix_packages(conda_prefix)
 
