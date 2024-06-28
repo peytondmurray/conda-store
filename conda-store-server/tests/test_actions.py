@@ -346,10 +346,6 @@ def test_get_conda_prefix_stats(tmp_path, conda_store, simple_conda_lock):
 @mock.patch.object(add_conda_prefix_packages, "api", wraps=api)
 # def test_add_conda_prefix_packages(db, conda_store, simple_specification, conda_prefix):
 def test_add_conda_prefix_packages(mock_api, mock_list_conda_prefix_packages, simple_specification):
-    # build_id = conda_store.register_environment(
-    #     db, specification=simple_specification, namespace="pytest"
-    # )
-
     build = orm.Build()
     build.build_key_version = 2
     build.deleted_on = None

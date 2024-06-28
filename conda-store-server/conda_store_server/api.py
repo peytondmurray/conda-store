@@ -609,6 +609,7 @@ def get_conda_package_build(db, package_id: int, subdir: str, build: str):
 
 
 def create_or_ignore_conda_package(db, package_record: Dict):
+    breakpoint()
     # first create the conda channel
     channel = package_record["channel_id"]
     if channel == "https://conda.anaconda.org/pypi":
