@@ -1,6 +1,5 @@
 import asyncio
 import datetime
-import json
 import pathlib
 import re
 import subprocess
@@ -345,29 +344,64 @@ def test_get_conda_prefix_stats(tmp_path, conda_store, simple_conda_lock):
     assert context.result["disk_usage"] > 0
 
 
-@mock.patch("conda_store_server.api.get_conda_package_build")
-@mock.patch("conda_store_server.api.get_conda_package")
-@mock.patch("conda_store_server.api.create_conda_channel")
-@mock.patch("conda_store_server.api.get_conda_channel")
-@mock.patch.object(add_conda_prefix_packages, "list_conda_prefix_packages")
-@mock.patch.object(add_conda_prefix_packages, "api", wraps=api)
-# def test_add_conda_prefix_packages(db, conda_store, simple_specification, conda_prefix):
-def test_add_conda_prefix_packages(
-    mock_api,
-    mock_list_conda_prefix_packages,
+def test_add_conda_prefix_packages(db, conda_store, simple_specification, conda_prefix):
+    build_id = conda_store.register_environment(
+        db, specification=simple_specification, namespace="pytest"
+    )
+
+    action.action_add_conda_prefix_packages(
+        db=db,
+        conda_prefix=conda_prefix,
+        build_id=build_id,
+    )
+
+    build = api.get_build(db, build_id=build_id)
+    assert len(build.package_builds) > 0
+
+
+@pytest.fixture()
+def mock_prefix_records():
+    class MockCondaObject:
+        def __init__(self, **kwargs):
+            for key, val in kwargs.items():
+                setattr(self, key, val)
+
+    return [
+        MockCondaObject(license_family='mock_license', name="_libgcc_mutex", version="0.1", build="main", build_number=0, channel=MockCondaObject(source="main/linux-64", base_url='mock_base_url'), subdir="linux-64", fn="_libgcc_mutex-0.1-main.tar.bz2", md5="013d3f22cd3b87f71224bd936765bcad", url="https://conda.anaconda.org/main/linux-64/_libgcc_mutex-0.1-main.tar.bz2", sha256="bd36a740479053a94d9c2a92bc55333a7a1a3e63ec0341d4cde6b7825bae0ee3", depends=(), constrains=(), track_features=(), features=(), license="", timestamp=1562011674.0, size=3121, package_tarball_full_path="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_libgcc_mutex-0.1-main.tar.bz2", extracted_package_dir="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_libgcc_mutex-0.1-main", files=(), paths_data=MockCondaObject(paths_version=1, paths=()), link=MockCondaObject( source="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_libgcc_mutex-0.1-main", type=1,), requested_spec="None"),
+        MockCondaObject(license_family='mock_license', name="libgomp", version="11.2.0", build="h1234567_1", build_number=1, channel=MockCondaObject(source="main/linux-64", base_url='mock_base_url'), subdir="linux-64", fn="libgomp-11.2.0-h1234567_1.tar.bz2", md5="3080c2813e6e1d0f8a100a38b5b3456d", url="https://conda.anaconda.org/main/linux-64/libgomp-11.2.0-h1234567_1.tar.bz2", sha256="118665c3af6392704fe608da9b98dbf815304537bb80ae99fb9fd59fc81f8b8e", depends=("_libgcc_mutex 0.1 main",), constrains=(), track_features=(), features=(), license="GPL-3.0-only WITH GCC-exception-3.1", timestamp=1654090775.0, size=573231, package_tarball_full_path="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgomp-11.2.0-h1234567_1.tar.bz2", extracted_package_dir="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgomp-11.2.0-h1234567_1", files=( "lib/libgomp.so", "lib/libgomp.so.1.0.0", "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION.gomp_copy",), paths_data=MockCondaObject( paths_version=1, paths=( MockCondaObject(_path="lib/libgomp.so", path_type="softlink"), MockCondaObject(_path="lib/libgomp.so.1.0.0", path_type="hardlink"), MockCondaObject( _path="share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION.gomp_copy", path_type="hardlink",),),), link=MockCondaObject( source="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgomp-11.2.0-h1234567_1", type=1,), requested_spec="None"),
+        MockCondaObject(license_family='mock_license', name="_openmp_mutex", version="5.1", build="1_gnu", build_number=0, channel=MockCondaObject(source="main/linux-64", base_url='mock_base_url'), subdir="linux-64", fn="_openmp_mutex-5.1-1_gnu.tar.bz2", md5="613805add1c05b538ff06d217252feb7", url="https://conda.anaconda.org/main/linux-64/_openmp_mutex-5.1-1_gnu.tar.bz2", sha256="9e1391519971e7ce527b3f268900d079bedf0eff3fb70cdb4844cd0f64dfe086", depends=("_libgcc_mutex 0.1 main", "libgomp >=7.5.0"), constrains=("openmp_impl 9999",), track_features=(), features=(), license="BSD-3-Clause", timestamp=1652859733.0, size=20810, package_tarball_full_path="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_openmp_mutex-5.1-1_gnu.tar.bz2", extracted_package_dir="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_openmp_mutex-5.1-1_gnu", files=("lib/libgomp.so.1",), paths_data=MockCondaObject( paths_version=1, paths=(MockCondaObject(_path="lib/libgomp.so.1", path_type="softlink"),),), link=MockCondaObject( source="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/_openmp_mutex-5.1-1_gnu", type=1,), requested_spec="None"),
+        MockCondaObject(license_family='mock_license', name="libgcc-ng", version="11.2.0", build="h1234567_1", build_number=1, channel=MockCondaObject(source="main/linux-64", base_url='mock_base_url'), subdir="linux-64", fn="libgcc-ng-11.2.0-h1234567_1.tar.bz2", md5="641e72e5067bd6d5454405879e1cd2a7", url="https://conda.anaconda.org/main/linux-64/libgcc-ng-11.2.0-h1234567_1.tar.bz2", sha256="f52d33d9c7cccf09b429a341d0bf803c8365a02a73a77b7ff887ec88f25d1c1a", depends=( "_openmp_mutex", "_libgcc_mutex 0.1 main", "__glibc >=2.17", "_libgcc_mutex * main",), constrains=( "_libgcc_mutex 0.1 main", "_openmp_mutex", "libgomp 11.2.0 h1234567_1",), track_features=(), features=(), license="GPL-3.0-only WITH GCC-exception-3.1", timestamp=1654090827.0, size=8895144, package_tarball_full_path="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgcc-ng-11.2.0-h1234567_1.tar.bz2", extracted_package_dir="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgcc-ng-11.2.0-h1234567_1", files=( "lib/libasan.so", "lib/libasan.so.6", "lib/libasan.so.6.0.0", "lib/libatomic.so", "lib/libatomic.so.1", "lib/libatomic.so.1.2.0", "lib/libgcc_s.so", "lib/libgcc_s.so.1", "lib/libitm.so", "lib/libitm.so.1", "lib/libitm.so.1.0.0", "lib/liblsan.so", "lib/liblsan.so.0", "lib/liblsan.so.0.0.0", "lib/libquadmath.so", "lib/libquadmath.so.0", "lib/libquadmath.so.0.0.0", "lib/libtsan.so", "lib/libtsan.so.0", "lib/libtsan.so.0.0.0", "lib/libubsan.so", "lib/libubsan.so.1", "lib/libubsan.so.1.0.0", "share/info/libgomp.info", "share/info/libquadmath.info", "share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION",), paths_data=MockCondaObject( paths_version=1, paths=( MockCondaObject(_path="lib/libasan.so", path_type="softlink"), MockCondaObject(_path="lib/libasan.so.6", path_type="softlink"), MockCondaObject(_path="lib/libasan.so.6.0.0", path_type="hardlink"), MockCondaObject(_path="lib/libatomic.so", path_type="softlink"), MockCondaObject(_path="lib/libatomic.so.1", path_type="softlink"), MockCondaObject(_path="lib/libatomic.so.1.2.0", path_type="hardlink"), MockCondaObject(_path="lib/libgcc_s.so", path_type="hardlink"), MockCondaObject(_path="lib/libgcc_s.so.1", path_type="hardlink"), MockCondaObject(_path="lib/libitm.so", path_type="softlink"), MockCondaObject(_path="lib/libitm.so.1", path_type="softlink"), MockCondaObject(_path="lib/libitm.so.1.0.0", path_type="hardlink"), MockCondaObject(_path="lib/liblsan.so", path_type="softlink"), MockCondaObject(_path="lib/liblsan.so.0", path_type="softlink"), MockCondaObject(_path="lib/liblsan.so.0.0.0", path_type="hardlink"), MockCondaObject(_path="lib/libquadmath.so", path_type="softlink"), MockCondaObject(_path="lib/libquadmath.so.0", path_type="softlink"), MockCondaObject( _path="lib/libquadmath.so.0.0.0", path_type="hardlink"), MockCondaObject(_path="lib/libtsan.so", path_type="softlink"), MockCondaObject(_path="lib/libtsan.so.0", path_type="softlink"), MockCondaObject(_path="lib/libtsan.so.0.0.0", path_type="hardlink"), MockCondaObject(_path="lib/libubsan.so", path_type="softlink"), MockCondaObject(_path="lib/libubsan.so.1", path_type="softlink"), MockCondaObject(_path="lib/libubsan.so.1.0.0", path_type="hardlink"), MockCondaObject(_path="share/info/libgomp.info", path_type="hardlink"), MockCondaObject( _path="share/info/libquadmath.info", path_type="hardlink"), MockCondaObject( _path="share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION", path_type="hardlink",),),), link=MockCondaObject( source="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/libgcc-ng-11.2.0-h1234567_1", type=1,), requested_spec="None"),
+        MockCondaObject(license_family='mock_license', name="yaml", version="0.2.5", build="h7b6447c_0", build_number=0, channel=MockCondaObject(source="main/linux-64", base_url='mock_base_url'), subdir="linux-64", fn="yaml-0.2.5-h7b6447c_0.tar.bz2", md5="fcff4f33bb4e3fa91f8d5c3168807abb", url="https://conda.anaconda.org/main/linux-64/yaml-0.2.5-h7b6447c_0.tar.bz2", sha256="21957e347f97960435b5267baefe1014fe53e4e673b478dfe46b82e371bc0e2b", depends=("libgcc-ng >=7.3.0",), constrains=(), track_features=(), features=(), license="MIT", timestamp=1593116114.0, size=88839, package_tarball_full_path="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/yaml-0.2.5-h7b6447c_0.tar.bz2", extracted_package_dir="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/yaml-0.2.5-h7b6447c_0", files=( "include/yaml.h", "lib/libyaml-0.so.2", "lib/libyaml-0.so.2.0.9", "lib/libyaml.a", "lib/libyaml.so", "lib/pkgconfig/yaml-0.1.pc",), paths_data=MockCondaObject( paths_version=1, paths=( MockCondaObject(_path="include/yaml.h", path_type="hardlink"), MockCondaObject(_path="lib/libyaml-0.so.2", path_type="softlink"), MockCondaObject(_path="lib/libyaml-0.so.2.0.9", path_type="hardlink"), MockCondaObject(_path="lib/libyaml.a", path_type="hardlink"), MockCondaObject(_path="lib/libyaml.so", path_type="softlink"), MockCondaObject( _path="lib/pkgconfig/yaml-0.1.pc", prefix_placeholder="/opt/anaconda1anaconda2anaconda3", file_mode="text", path_type="hardlink",),),), link=MockCondaObject( source="/home/pdmurray/.conda/envs/conda-store/envs/conda-store-server-dev/pkgs/yaml-0.2.5-h7b6447c_0", type=1,), requested_spec="yaml"),
+    ]
+
+
+@mock.patch('conda_store_server.api.get_build')
+@mock.patch('conda_store_server.api.create_conda_package_build')
+@mock.patch('conda_store_server.api.get_conda_package_build')
+@mock.patch('conda_store_server.api.create_conda_package')
+@mock.patch('conda_store_server.api.get_conda_package')
+@mock.patch('conda_store_server.api.create_conda_channel')
+@mock.patch('conda_store_server.api.get_conda_channel')
+@mock.patch.object(add_conda_prefix_packages, 'hashlib')
+@mock.patch.object(add_conda_prefix_packages, 'PrefixData')
+@mock.patch.object(add_conda_prefix_packages, 'os')
+@mock.patch.object(add_conda_prefix_packages, 'json')
+def test_add_conda_prefix_packages2(
+    mock_json,
+    mock_os,
+    mock_prefix_data,
+    mock_hashlib,
     mock_get_conda_channel,
     mock_create_conda_channel,
     mock_get_conda_package,
     mock_create_conda_package,
     mock_get_conda_package_build,
+    mock_create_conda_package_build,
+    mock_get_build,
+    mock_prefix_records,
     simple_specification,
 ):
-    mock_get_conda_channel.return_value = None
-    mock_create_conda_channel.id.return_value = 1
-    mock_get_conda_package.return_value = None
-    mock_get_conda_package_build.return_value = None
-
-    build = orm.Build(
+    mock_get_build.return_value = orm.Build(
         build_key_version=2,
         deleted_on=None,
         ended_on=None,
@@ -383,37 +417,18 @@ def test_add_conda_prefix_packages(
         status_info=None,
     )
 
-    packages = json.loads(
-        """
-        [{"build": "main", "build_number": 0, "constrains": [], "depends": [], "license": "", "license_family": null, "md5": "013d3f22cd3b87f71224bd936765bcad", "sha256": "bd36a740479053a94d9c2a92bc55333a7a1a3e63ec0341d4cde6b7825bae0ee3", "name": "_libgcc_mutex", "size": 3121, "subdir": "linux-64", "timestamp": 1562011674, "version": "0.1", "channel_id": "https://conda.anaconda.org/main", "summary": "Mutex for libgcc and libgcc-ng", "description": null }, { "build": "h1234567_1", "build_number": 1, "constrains": [], "depends": [ "_libgcc_mutex 0.1 main" ], "license": "GPL-3.0-only WITH GCC-exception-3.1", "license_family": null, "md5": "3080c2813e6e1d0f8a100a38b5b3456d", "sha256": "118665c3af6392704fe608da9b98dbf815304537bb80ae99fb9fd59fc81f8b8e", "name": "libgomp", "size": 573231, "subdir": "linux-64", "timestamp": 1654090775, "version": "11.2.0", "channel_id": "https://conda.anaconda.org/main", "summary": "The GCC OpenMP implementation.", "description": null }, { "build": "1_gnu", "build_number": 0, "constrains": [ "openmp_impl 9999" ], "depends": [ "_libgcc_mutex 0.1 main", "libgomp >=7.5.0" ], "license": "BSD-3-Clause", "license_family": null, "md5": "613805add1c05b538ff06d217252feb7", "sha256": "9e1391519971e7ce527b3f268900d079bedf0eff3fb70cdb4844cd0f64dfe086", "name": "_openmp_mutex", "size": 20810, "subdir": "linux-64", "timestamp": 1652859733, "version": "5.1", "channel_id": "https://conda.anaconda.org/main", "summary": "OpenMP Implementation Mutex", "description": null }, { "build": "h1234567_1", "build_number": 1, "constrains": [ "_libgcc_mutex 0.1 main", "_openmp_mutex", "libgomp 11.2.0 h1234567_1" ], "depends": [ "_openmp_mutex", "_libgcc_mutex 0.1 main", "__glibc >=2.17", "_libgcc_mutex * main" ], "license": "GPL-3.0-only WITH GCC-exception-3.1", "license_family": null, "md5": "641e72e5067bd6d5454405879e1cd2a7", "sha256": "f52d33d9c7cccf09b429a341d0bf803c8365a02a73a77b7ff887ec88f25d1c1a", "name": "libgcc-ng", "size": 8895144, "subdir": "linux-64", "timestamp": 1654090827, "version": "11.2.0", "channel_id": "https://conda.anaconda.org/main", "summary": "The GCC low-level runtime library", "description": null }, { "build": "h7b6447c_0", "build_number": 0, "constrains": [], "depends": [ "libgcc-ng >=7.3.0" ], "license": "MIT", "license_family": null, "md5": "fcff4f33bb4e3fa91f8d5c3168807abb", "sha256": "21957e347f97960435b5267baefe1014fe53e4e673b478dfe46b82e371bc0e2b", "name": "yaml", "size": 88839, "subdir": "linux-64", "timestamp": 1593116114, "version": "0.2.5", "channel_id": "https://conda.anaconda.org/main", "summary": "A C library for parsing and emitting YAML", "description": "YAML is a human friendly data serialization standard for all programming\\nlanguages.\\n" } ]
-        """
+    mock_os.path.exists.return_value = True
+    mock_prefix_data.return_value.iter_records.return_value = (
+        mock_prefix_records
     )
 
-    mock_api.get_build.return_value = build
-    mock_list_conda_prefix_packages.return_value = packages
-
-    mock_db = mock.MagicMock()
-    mock_conda_prefix = mock.MagicMock()
-    mock_build_id = mock.MagicMock()
-
-    add_conda_prefix_packages.action_add_conda_prefix_packages(
-        db=mock_db,
-        conda_prefix=mock_conda_prefix,
-        build_id=mock_build_id,
-    )
-
-    # build_id = conda_store.register_environment(
-    #     db, specification=simple_specification, namespace="pytest"
-    # )
-    #
-    # action.action_add_conda_prefix_packages(
-    #     db=db,
-    #     conda_prefix=conda_prefix,
-    #     build_id=build_id,
-    # )
-
-    # build = api.get_build(db, build_id=build_id)
-    # assert len(build.package_builds) > 0
+    mock_open = mock.mock_open(read_data="foo_checksum")
+    with mock.patch.object(add_conda_prefix_packages, "open", mock_open):
+        add_conda_prefix_packages.action_add_conda_prefix_packages(
+            db=mock.MagicMock(),
+            conda_prefix='/tmp/foo',
+            build_id=1,
+        )
 
 
 def test_add_lockfile_packages(
