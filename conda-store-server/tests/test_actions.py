@@ -1,5 +1,6 @@
 import asyncio
 import datetime
+import os
 import pathlib
 import re
 import subprocess
@@ -376,12 +377,7 @@ def mock_prefix_records():
 
 
 @mock.patch('conda_store_server.api.get_build')
-@mock.patch('conda_store_server.api.create_conda_package_build')
-@mock.patch('conda_store_server.api.get_conda_package_build')
-@mock.patch('conda_store_server.api.create_conda_package')
-@mock.patch('conda_store_server.api.get_conda_package')
-@mock.patch('conda_store_server.api.create_conda_channel')
-@mock.patch('conda_store_server.api.get_conda_channel')
+@mock.patch('conda_store_server.api.create_or_ignore_conda_package')
 @mock.patch.object(add_conda_prefix_packages, 'hashlib')
 @mock.patch.object(add_conda_prefix_packages, 'PrefixData')
 @mock.patch.object(add_conda_prefix_packages, 'os')
@@ -391,12 +387,7 @@ def test_add_conda_prefix_packages2(
     mock_os,
     mock_prefix_data,
     mock_hashlib,
-    mock_get_conda_channel,
-    mock_create_conda_channel,
-    mock_get_conda_package,
-    mock_create_conda_package,
-    mock_get_conda_package_build,
-    mock_create_conda_package_build,
+    mock_create_or_ignore_conda_package,
     mock_get_build,
     mock_prefix_records,
     simple_specification,
@@ -428,6 +419,15 @@ def test_add_conda_prefix_packages2(
             db=mock.MagicMock(),
             conda_prefix='/tmp/foo',
             build_id=1,
+        )
+
+    for record in mock_prefix_records:
+        breakpoint()
+        assert (
+            os.path.join(
+                record.extracted_package_dir,
+                "info/about.json",
+            ) in mock_open.call_args_list
         )
 
 

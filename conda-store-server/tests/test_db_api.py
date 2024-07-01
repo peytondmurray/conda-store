@@ -1,3 +1,5 @@
+from unittest import mock
+
 import pytest
 
 from conda_store_server import api
@@ -272,3 +274,28 @@ def test_build_path_too_long(db, conda_store, simple_specification):
         BuildPathError, match=r"build_path too long: must be <= 255 characters"
     ):
         build.build_path(conda_store)
+
+
+def test_create_or_ignore_conda_package():
+
+    mock_db = mock.MagicMock()
+    package = {
+        'build': 'main',
+        'build_number': 0,
+        'channel_id': 'mock_base_url',
+        'constrains': [],
+        'depends': [],
+        'description': 'this is a mock package',
+        'license': '',
+        'license_family': 'mock_license',
+        'md5': mock.MagicMock(),
+        'name': '_libgcc_mutex',
+        'sha256': mock.MagicMock(),
+        'size': 3121,
+        'subdir': 'linux-64',
+        'summary': 'a more full description of the mock package',
+        'timestamp': 1562011674.0,
+        'version': '0.1'
+    }
+
+    build = create_or_ignore_conda_package(mock_db, package)
