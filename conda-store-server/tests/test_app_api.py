@@ -3,26 +3,27 @@ import sys
 from celery.result import AsyncResult
 
 from conda_store_server import api
-from conda_store_server._internal import schema
+from conda_store_server._internal import action, schema
 
 
-def test_conda_store_app_register_solve(db, conda_store, celery_worker):
-    conda_specification = schema.CondaSpecification(
-        name="pytest-name",
-        channels=["main"],
-        dependencies=["python"],
+def test_conda_store_app_register_solve(
+    db, conda_store, simple_specification, simple_conda_lock, celery_worker
+):
+    task_id, solve_id = conda_store.register_solve(db, simple_specification)
+    action.action_add_lockfile_packages(
+        db=db,
+        conda_lock_spec=simple_conda_lock,
+        solve_id=solve_id,
     )
-
-    task_id, solve_id = conda_store.register_solve(db, conda_specification)
     solve = api.get_solve(db, solve_id=solve_id)
 
     assert solve is not None
     assert solve.started_on is None
     assert solve.ended_on is None
     assert solve.package_builds == []
-    assert solve.specification.spec["name"] == conda_specification.name
-    assert solve.specification.spec["channels"] == conda_specification.channels
-    assert solve.specification.spec["dependencies"] == conda_specification.dependencies
+    assert solve.specification.spec["name"] == simple_specification.name
+    assert solve.specification.spec["channels"] == simple_specification.channels
+    assert solve.specification.spec["dependencies"] == simple_specification.dependencies
     task = AsyncResult(task_id)
     task.get(timeout=30)
     assert task.state == "SUCCESS"
