@@ -1,6 +1,7 @@
 import pytest
 
 from conda_store_server import api
+from conda_store_server._internal import orm
 from conda_store_server._internal.orm import NamespaceRoleMapping
 from conda_store_server._internal.utils import BuildPathError
 
@@ -226,6 +227,10 @@ def test_environment_crud(db):
     environment = api.get_environment(
         db, namespace_id=namespace.id, name=environment_name
     )
+
+    breakpoint()
+    print("here")
+
     assert environment is not None
 
     # # check that deleting a environment works
