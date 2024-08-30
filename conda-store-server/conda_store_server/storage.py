@@ -186,12 +186,14 @@ class S3Storage(Storage):
             raise ValueError(f"S3 bucket={self.bucket_name} does not exist")
 
     def fset(self, db, build_id, key, filename, content_type, artifact_type):
+        """Upload a file to the S3 bucket."""
         self.internal_client.fput_object(
             self.bucket_name, key, filename, content_type=content_type
         )
         super().fset(db, build_id, key, filename, artifact_type)
 
     def set(self, db, build_id, key, value, content_type, artifact_type):
+        """Upload data from a stream to the S3 bucket."""
         self.internal_client.put_object(
             self.bucket_name,
             key,
