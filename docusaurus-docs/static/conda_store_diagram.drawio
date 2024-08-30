@@ -1,130 +1,130 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.234 Electron/31.4.0 Safari/537.36" version="24.7.5">
   <diagram name="Page-1" id="KlAH2fJn-L_tMjYrN0WP">
-    <mxGraphModel dx="6465" dy="2272" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="4523" dy="1293" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-46" value="Containers" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-46" value="Containers" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="870" y="30" width="230" height="590" as="geometry">
             <mxRectangle x="990" y="270" width="100" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-40" value="minio&lt;div&gt;S3-compatible object store&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-46">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-40" value="minio&lt;div&gt;S3-compatible object store&lt;/div&gt;" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="Hh8aErLrJKnho8g5zi-9-46" vertex="1">
           <mxGeometry x="50" y="370" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-42" value="postgres" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-46">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-42" value="postgres" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="Hh8aErLrJKnho8g5zi-9-46" vertex="1">
           <mxGeometry x="50" y="270" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-43" value="conda-store-server" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-46">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-43" value="conda-store-server" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="Hh8aErLrJKnho8g5zi-9-46" vertex="1">
           <mxGeometry x="50" y="170" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-44" value="conda-store-worker" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-46">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-44" value="conda-store-worker" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="Hh8aErLrJKnho8g5zi-9-46" vertex="1">
           <mxGeometry x="50" y="70" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-45" value="redis" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-46">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-45" value="redis" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="Hh8aErLrJKnho8g5zi-9-46" vertex="1">
           <mxGeometry x="50" y="470" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-47" value="Using the REST API" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-47" value="Using the REST API" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="425" y="30" width="385" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-15" value="conda-store-server REST API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-47">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-15" value="conda-store-server REST API" style="rounded=1;whiteSpace=wrap;html=1;" parent="Hh8aErLrJKnho8g5zi-9-47" vertex="1">
           <mxGeometry x="230" y="130" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-47" source="Hh8aErLrJKnho8g5zi-9-49" target="Hh8aErLrJKnho8g5zi-9-15">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;startArrow=classic;startFill=1;" parent="Hh8aErLrJKnho8g5zi-9-47" source="Hh8aErLrJKnho8g5zi-9-49" target="Hh8aErLrJKnho8g5zi-9-15" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="40" y="159.99999999999977" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-18" value="Web Requests" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Hh8aErLrJKnho8g5zi-9-17">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-18" value="Web Requests" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="Hh8aErLrJKnho8g5zi-9-17" vertex="1" connectable="0">
           <mxGeometry x="0.0114" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-49" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-47">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-49" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="Hh8aErLrJKnho8g5zi-9-47" vertex="1">
           <mxGeometry x="25" y="130" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-48" value="Using the CLI" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-48" value="Using the CLI" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="20" y="30" width="380" height="320" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-1" value="conda-store-server REST API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-48">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-1" value="conda-store-server REST API" style="rounded=1;whiteSpace=wrap;html=1;" parent="Hh8aErLrJKnho8g5zi-9-48" vertex="1">
           <mxGeometry x="230" y="230" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-2" value="conda-store CLI" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-48">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-2" value="conda-store CLI" style="rounded=1;whiteSpace=wrap;html=1;" parent="Hh8aErLrJKnho8g5zi-9-48" vertex="1">
           <mxGeometry x="230" y="50" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;startArrow=classic;startFill=1;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-48" source="Hh8aErLrJKnho8g5zi-9-3" target="Hh8aErLrJKnho8g5zi-9-2">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;strokeColor=default;startArrow=classic;startFill=1;" parent="Hh8aErLrJKnho8g5zi-9-48" source="Hh8aErLrJKnho8g5zi-9-3" target="Hh8aErLrJKnho8g5zi-9-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="70" y="100" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-12" value="Terminal Commands" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Hh8aErLrJKnho8g5zi-9-11">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-12" value="Terminal Commands" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="Hh8aErLrJKnho8g5zi-9-11" vertex="1" connectable="0">
           <mxGeometry x="0.0114" y="-2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-3" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-48">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-3" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="Hh8aErLrJKnho8g5zi-9-48" vertex="1">
           <mxGeometry x="30" y="50" width="30" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-48" source="Hh8aErLrJKnho8g5zi-9-1" target="Hh8aErLrJKnho8g5zi-9-2">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-7" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="Hh8aErLrJKnho8g5zi-9-48" source="Hh8aErLrJKnho8g5zi-9-1" target="Hh8aErLrJKnho8g5zi-9-2" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="410" y="200" as="sourcePoint" />
             <mxPoint x="460" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-8" value="Web requests" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Hh8aErLrJKnho8g5zi-9-7">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-8" value="Web requests" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="Hh8aErLrJKnho8g5zi-9-7" vertex="1" connectable="0">
           <mxGeometry x="-0.1492" relative="1" as="geometry">
             <mxPoint y="-6" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-138" value="List Environments" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-138" value="List Environments" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="-1850" width="1760" height="1080" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-115" value="conda_store.get_db()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-113" target="Hh8aErLrJKnho8g5zi-9-114">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-115" value="conda_store.get_db()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-113" target="Hh8aErLrJKnho8g5zi-9-114" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-125" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-113" target="Hh8aErLrJKnho8g5zi-9-124">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-125" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-113" target="Hh8aErLrJKnho8g5zi-9-124" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-128" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;paginated response&lt;/span&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;containing the requested&lt;/div&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;environments&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-128" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;paginated response&lt;/span&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;containing the requested&lt;/div&gt;&lt;div style=&quot;forced-color-adjust: none; border-color: rgb(0, 0, 0); color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;&quot;&gt;environments&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="649.5" y="955" as="sourcePoint" />
             <mxPoint x="290.32352941176396" y="955" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-113" value="conda_store_server._internal.server.views.api&lt;br&gt;&lt;pre&gt;api_list_environments&lt;/pre&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-113" value="conda_store_server._internal.server.views.api&lt;br&gt;&lt;pre&gt;api_list_environments&lt;/pre&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="520" y="390" width="260" height="630" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-117" value="&lt;div&gt;orm.new_session_factory()&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-114" target="Hh8aErLrJKnho8g5zi-9-116">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-117" value="&lt;div&gt;orm.new_session_factory()&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-114" target="Hh8aErLrJKnho8g5zi-9-116" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-119" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-119" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="924.5" y="595.7647058823532" as="sourcePoint" />
             <mxPoint x="649.3235294117649" y="595.7647058823532" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-114" value="conda_store_server.app" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-114" value="conda_store_server.app" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="810" y="390" width="230" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-118" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-118" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1184.5" y="596.7647058823532" as="sourcePoint" />
             <mxPoint x="924.3235294117649" y="596.7647058823532" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-141" value="create_engine()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-116" target="Hh8aErLrJKnho8g5zi-9-139">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-141" value="create_engine()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-116" target="Hh8aErLrJKnho8g5zi-9-139" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-147" value="sessionmaker(bind=engine)" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-147" value="sessionmaker(bind=engine)" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1184.3235294117649" y="570.3529411764707" as="sourcePoint" />
             <mxPoint x="1474.5" y="570.3529411764707" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-116" value="conda_store_server._internal.orm" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-116" value="conda_store_server._internal.orm" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="1070" y="390" width="230" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-121" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;GET /environment/&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-120">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-121" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;GET /environment/&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-120" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="390.32352941176396" y="511" as="sourcePoint" />
             <mxPoint x="649.5" y="511" as="targetPoint" />
@@ -134,19 +134,19 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-120" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-120" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="281" y="390" width="20" height="630" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-127" value="sqlalchemy Query&lt;div&gt;containing environments&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-124">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-127" value="sqlalchemy Query&lt;div&gt;containing environments&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-124" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="934.5" y="955.0588235294117" as="sourcePoint" />
             <mxPoint x="649.3235294117649" y="955.0588235294117" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-124" value="conda_store_server.api&lt;br&gt;&lt;pre&gt;list_environments&lt;/pre&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-124" value="conda_store_server.api&lt;br&gt;&lt;pre&gt;list_environments&lt;/pre&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="808" y="730" width="230" height="300" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-134" value="&lt;pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;/pre&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;align=left;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-137" target="Hh8aErLrJKnho8g5zi-9-113">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-134" value="&lt;pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;/pre&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;align=left;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-137" target="Hh8aErLrJKnho8g5zi-9-113" edge="1">
           <mxGeometry x="-0.1099" y="-390" relative="1" as="geometry">
             <mxPoint x="475" y="467" as="targetPoint" />
             <mxPoint as="offset" />
@@ -155,29 +155,169 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-136" target="Hh8aErLrJKnho8g5zi-9-137">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="Hh8aErLrJKnho8g5zi-9-138" source="Hh8aErLrJKnho8g5zi-9-136" target="Hh8aErLrJKnho8g5zi-9-137" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-136" value="&lt;pre&gt;conda_store_server.server.dependencies&lt;/pre&gt;&lt;div&gt;FastAPI request dependencies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-136" value="&lt;pre&gt;conda_store_server.server.dependencies&lt;/pre&gt;&lt;div&gt;FastAPI request dependencies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="300" y="40" width="280" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-137" value="&lt;pre style=&quot;font-size: 11px; text-align: left;&quot;&gt;&lt;p&gt;FastAPI automatically injects a few arguments:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;auth: conda_store_server.server.auth.Authenication - The object which authenticates requests&lt;/li&gt;&lt;li&gt;entity: conda_store_server._internal.schema.AuthenticationToken - The token for the user making the request&lt;/li&gt;&lt;li&gt;conda_store: conda_store_server.app.CondaStore - The running CondaStore application&lt;/li&gt;&lt;/ol&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;glass=0;strokeColor=default;dashed=1;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-137" value="&lt;pre style=&quot;font-size: 11px; text-align: left;&quot;&gt;&lt;p&gt;FastAPI automatically injects a few arguments:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;auth: conda_store_server.server.auth.Authenication - The object which authenticates requests&lt;/li&gt;&lt;li&gt;entity: conda_store_server._internal.schema.AuthenticationToken - The token for the user making the request&lt;/li&gt;&lt;li&gt;conda_store: conda_store_server.app.CondaStore - The running CondaStore application&lt;/li&gt;&lt;/ol&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;glass=0;strokeColor=default;dashed=1;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="40" y="235" width="800" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-146" value="engine: Engine" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-146" value="engine: Engine" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1474.5" y="536.3529411764707" as="sourcePoint" />
             <mxPoint x="1184.3235294117649" y="536.3529411764707" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-148" value="session_factory: sessionmaker" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-148" value="session_factory: sessionmaker" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" parent="Hh8aErLrJKnho8g5zi-9-138" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1474.5" y="596.3529411764707" as="sourcePoint" />
             <mxPoint x="1184.3235294117649" y="596.3529411764707" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Hh8aErLrJKnho8g5zi-9-139" value="sqlalchemy" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;direction=east;" vertex="1" parent="Hh8aErLrJKnho8g5zi-9-138">
+        <mxCell id="Hh8aErLrJKnho8g5zi-9-139" value="sqlalchemy" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;direction=east;" parent="Hh8aErLrJKnho8g5zi-9-138" vertex="1">
           <mxGeometry x="1360" y="390" width="230" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-1" value="Create New Environment" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-1860" y="1121" width="1910" height="1970" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-2" value="conda_store.get_db()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="649.6666666666665" y="510.16666666666697" as="sourcePoint" />
+            <mxPoint x="1186.5" y="510.16666666666697" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-3" value="api.get_namespace(db: Session)" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-5" target="mDM5XdQEENlDdixeqJVe-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-29" value="auth.authorize_request(&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;request,&lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&quot;namespace_name/specification_name&quot;,&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;permissions,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;require&lt;/div&gt;&lt;div&gt;)&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;align=left;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" target="mDM5XdQEENlDdixeqJVe-28">
+          <mxGeometry x="-0.6287" y="1" relative="1" as="geometry">
+            <mxPoint x="649.6666666666665" y="1232.166666666667" as="sourcePoint" />
+            <mxPoint x="1028.4999999999995" y="1232.166666666667" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-32" value="Response: {status: ok}" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="649.5" y="1625.166666666667" as="sourcePoint" />
+            <mxPoint x="290.6666666666665" y="1625.166666666667" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-34" value="conda_store.register_environment(&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;db: Session,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;specification: dict,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;namespace: str,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;force: bool,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;is_lockfile: bool&lt;/div&gt;&lt;div&gt;&lt;div&gt;)&lt;/div&gt;&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;align=left;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="-0.3654" relative="1" as="geometry">
+            <mxPoint x="649.6666666666665" y="1375.166666666667" as="sourcePoint" />
+            <mxPoint x="1186.5" y="1375.166666666667" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-5" value="conda_store_server._internal.server.views.api&lt;br&gt;&lt;pre&gt;api_post_specification&lt;/pre&gt;" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="520" y="390" width="260" height="1290" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-6" value="&lt;div&gt;orm.new_session_factory()&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1186.666666666667" y="510.16666666666697" as="sourcePoint" />
+            <mxPoint x="1446.5" y="510.16666666666697" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-7" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="924.5" y="595.7647058823532" as="sourcePoint" />
+            <mxPoint x="649.3235294117649" y="595.7647058823532" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-8" value="conda_store_server.app" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="1072" y="390" width="230" height="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-9" value="db: Session" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1446.5" y="596.7647058823532" as="sourcePoint" />
+            <mxPoint x="1186.3235294117649" y="596.7647058823532" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-10" value="create_engine()" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1446.666666666667" y="510.99999999999955" as="sourcePoint" />
+            <mxPoint x="1736.5" y="505.99999999999955" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-11" value="sessionmaker(bind=engine)" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1446.3235294117649" y="570.3529411764707" as="sourcePoint" />
+            <mxPoint x="1736.5" y="570.3529411764707" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-12" value="conda_store_server._internal.orm" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="1332" y="390" width="230" height="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-13" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 11px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: nowrap; background-color: rgb(24, 20, 29); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;&quot;&gt;POST /specification/&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390.32352941176396" y="511" as="sourcePoint" />
+            <mxPoint x="649.5" y="511" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="475" y="511" />
+              <mxPoint x="649" y="512" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-14" value="" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="281" y="390" width="20" height="1300" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-15" value="sqlalchemy Query&lt;div&gt;containing namespace&lt;/div&gt;" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="934.5" y="955.0588235294117" as="sourcePoint" />
+            <mxPoint x="649.3235294117649" y="955.0588235294117" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-16" value="conda_store_server.api" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="850" y="730" width="230" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-17" value="&lt;pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;/pre&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;align=left;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-20" target="mDM5XdQEENlDdixeqJVe-5">
+          <mxGeometry x="-0.1099" y="-390" relative="1" as="geometry">
+            <mxPoint x="475" y="467" as="targetPoint" />
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="440" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" source="mDM5XdQEENlDdixeqJVe-19" target="mDM5XdQEENlDdixeqJVe-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-19" value="&lt;pre&gt;conda_store_server.server.dependencies&lt;/pre&gt;&lt;div&gt;FastAPI request dependencies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="300" y="40" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-20" value="&lt;pre style=&quot;font-size: 11px; text-align: left;&quot;&gt;&lt;p&gt;FastAPI automatically injects a few arguments:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;auth: conda_store_server.server.auth.Authenication - The object which authenticates requests&lt;/li&gt;&lt;li&gt;entity: conda_store_server._internal.schema.AuthenticationToken - The token for the user making the request&lt;/li&gt;&lt;li&gt;conda_store: conda_store_server.app.CondaStore - The running CondaStore application&lt;/li&gt;&lt;/ol&gt;&lt;/pre&gt;" style="rounded=1;whiteSpace=wrap;html=1;glass=0;strokeColor=default;dashed=1;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="40" y="235" width="800" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-21" value="engine: Engine" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=horizontal;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1736.5" y="536.3529411764707" as="sourcePoint" />
+            <mxPoint x="1446.3235294117649" y="536.3529411764707" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-22" value="session_factory: sessionmaker" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;curved=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1736.5" y="596.3529411764707" as="sourcePoint" />
+            <mxPoint x="1446.3235294117649" y="596.3529411764707" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-23" value="sqlalchemy" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;direction=east;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="1622" y="390" width="230" height="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-28" value="conda_store_server.server.auth" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=70;" vertex="1" parent="mDM5XdQEENlDdixeqJVe-1">
+          <mxGeometry x="850" y="1080" width="230" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="mDM5XdQEENlDdixeqJVe-35" value="CondaStore.get_settings()" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="mDM5XdQEENlDdixeqJVe-1" target="mDM5XdQEENlDdixeqJVe-8">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1186.666666666667" y="1375" as="sourcePoint" />
+            <mxPoint x="1186.666666666667" y="1596.9999999999986" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1320" y="1375" />
+              <mxPoint x="1320" y="1439" />
+              <mxPoint x="1260" y="1439" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,0 +1,116 @@
+shape: sequence_diagram
+
+User
+views_api: conda_store_server._internal.server.views.api
+server_app: conda_store_server.app
+server_auth: conda_store_server.server.auth
+server_api: conda_store_server.api
+orm: conda_store_server._internal.orm
+sqlalchemy
+environment: conda_store_server._internal.environment
+
+User -> views_api: POST /specification/
+
+"Init the database" {
+  views_api -> server_app: conda_store.get_db()
+  server_app -> orm: orm.new_session_factory()
+  orm -> sqlalchemy: create_engine()
+  sqlalchemy -> orm: engine: Engine
+  orm -> sqlalchemy: sessionmaker(bind=engine)
+  sqlalchemy -> orm: session_factory: sessionmaker
+
+  orm -> server_app: db: Session
+  server_app -> views_api: db: Session
+}
+
+"Grab the requested namespace" {
+  views_api -> server_api: api.get_namespace(db: Session)
+  server_api -> sqlalchemy: db.query(orm.Namespace)
+  sqlalchemy -> server_api: sqlalchemy Query\ncontaining namespace\n(if exists)
+  server_api -> views_api: sqlalchemy Query\ncontaining namespace\n(if exists)
+}
+
+views_api -> server_auth: |python
+  auth.authorize_request(
+    request,
+    "namespace_name/specification_name",
+    permissions,
+    require
+  )
+|
+
+views_api -> server_app: |python
+  conda_store.register_environment(
+    db: Session,
+    specification: dict,
+    namespace: str,
+    force: bool,
+    is_lockfile: bool
+  )
+|
+
+"Get settings from the database" {
+  server_app -> server_app: CondaStore.get_settings()
+  server_app -> server_api: api.get_kvstore_key_values(db, prefix)
+  server_api -> sqlalchemy: db.query(orm.KeyValueStore)
+  sqlalchemy -> server_api: Query containing KeyValueStore
+  server_api -> server_app: "list[KeyValueStore]"
+  server_app -> server_app: schema.Settings
+}
+
+"Get the namespace for the new environment" {
+# Ensure the namespace for the new environment exists
+  server_app -> server_api: api.ensure_namespace(db, namespace_name)
+  server_api -> sqlalchemy: db.query(orm.Namespace)
+  sqlalchemy -> server_api: Query containing the\nrequested namespace
+
+  "if namespace doesn't exist": {
+    server_api -> server_api: create_namespace(db, namespace_name)
+    server_api -> sqlalchemy: db.add(orm.Namespace)
+    server_api -> server_api: Namespace
+  }
+  server_api -> server_app: Namespace
+}
+
+
+"Check that there's enough space for the new environment" {
+  server_app -> server_app: conda_store_validate_action()
+
+  "Get the settings" {
+    server_app -> server_app: CondaStore.get_settings()
+    server_app -> server_api: api.get_kvstore_key_values(db, prefix)
+    server_api -> sqlalchemy: db.query(orm.KeyValueStore)
+    sqlalchemy -> server_api: Query containing KeyValueStore
+    server_api -> server_app: "list[KeyValueStore]"
+    server_app -> server_app: schema.Settings
+  }
+
+  "Check the free storage; note this does not check\nthe current storage, only the db entry": {
+     server_app -> server_api: get_system_metrics()
+     server_api -> sqlalchemy: db.query(free_storage, total_storage, disk_usage)
+     sqlalchemy -> server_api: Query containing\nrequested storage metrics
+     server_api -> server_app: Query containing\nrequested storage metrics
+  }
+}
+
+"Check that the specification is valid" {
+  server_app -> server_app: conda_store_validate_specification()
+
+  "Get the settings" {
+    server_app -> server_app: CondaStore.get_settings()
+    server_app -> server_api: api.get_kvstore_key_values(db, prefix)
+    server_api -> sqlalchemy: db.query(orm.KeyValueStore)
+    sqlalchemy -> server_api: Query containing KeyValueStore
+    server_api -> server_app: "list[KeyValueStore]"
+    server_app -> server_app: schema.Settings
+  }
+
+  server_app -> environment: validate_environment_channels()
+  environment -> server_app: schema.Specification
+
+  server_app -> environment: validate_environment_pypi_packages()
+  environment -> server_app: schema.Specification
+
+  server_app -> environment: validate_environment_conda_packages()
+  environment -> server_app: schema.Specification
+}

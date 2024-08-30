@@ -56,9 +56,31 @@ def conda_store_validate_specification(
 def conda_store_validate_action(
     db: Session,
     conda_store: "CondaStore",
-    namespace: str,
+    _namespace: str,
     action: schema.Permissions,
 ) -> None:
+    """Check that an environment can be created with the given permissions.
+
+    If the action is to create or update an environment and there is not enough free
+    disk space as configured in the conda_store settings, an exception is raised.
+
+    Parameters
+    ----------
+    db : Session
+        Database containign settings and system metrics
+    conda_store : "CondaStore"
+        Application instance; used to get settings from the database
+    _namespace : str
+        Namespace name; unused here
+    action : schema.Permissions
+        The action that is being taken
+
+    Exceptions
+    ----------
+    utils.CondaStoreError
+        Raised if an environment is to be created or updated and there isn't
+        enough space to do so.
+    """
     settings = conda_store.get_settings(db)
     system_metrics = api.get_system_metrics(db)
 

@@ -45,6 +45,28 @@ def discover_environments(paths):
 def validate_environment_channels(
     specification: schema.Specification, settings: schema.Settings
 ) -> schema.Specification:
+    """Check that the specification only specifies allowed channels.
+
+    Parameters
+    ----------
+    specification : schema.Specification
+        Specification to validate
+
+    settings : schema.Settings
+        CondaStore settings containing default channel information
+
+    Returns
+    -------
+    schema.Specification
+        Specification containing validated channels. If no channels were specified,
+        the default channels are added to the specification.
+
+    Exceptions
+    ----------
+    ValueError
+        Raised if the specification contains disallowed channels
+
+    """
     if len(specification.channels) == 0:
         specification.channels = settings.conda_default_channels.copy()
 
