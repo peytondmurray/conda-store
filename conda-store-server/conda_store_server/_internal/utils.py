@@ -144,7 +144,7 @@ def recursive_sort(v):
     return v
 
 
-def datastructure_hash(v):
+def datastructure_hash(v) -> str:
     json_blob = json.dumps(recursive_sort(v), cls=CustomJSONEncoder)
     return hashlib.sha256(json_blob.encode("utf-8")).hexdigest()
 

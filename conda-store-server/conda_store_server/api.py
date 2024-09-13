@@ -8,7 +8,7 @@ import re
 from typing import Any, Dict, List, Union
 
 from sqlalchemy import distinct, func, null, or_
-from sqlalchemy.orm import Query, aliased, session
+from sqlalchemy.orm import Query, Session, aliased, session
 
 from conda_store_server._internal import conda_utils, orm, schema, utils
 from conda_store_server._internal.environment import filter_environments
@@ -438,7 +438,7 @@ def ensure_specification(
     specification_orm = get_specification(db, sha256=specification_sha256)
 
     if specification_orm is None:
-        specification_orm = create_speficication(
+        specification_orm = create_specification(
             db, specification, is_lockfile=is_lockfile
         )
         db.commit()
@@ -446,7 +446,7 @@ def ensure_specification(
     return specification_orm
 
 
-def create_speficication(
+def create_specification(
     db,
     specification: Union[schema.CondaSpecification, schema.LockfileSpecification],
     is_lockfile: bool = False,
@@ -461,7 +461,21 @@ def list_specifications(db, search=None):
     return db.query(orm.Specification).filter(*filters)
 
 
-def get_specification(db, sha256: str):
+def get_specification(db: Session, sha256: str) -> orm.Specification | None:
+    """Retrieve a specification from the database by hash.
+
+    Parameters
+    ----------
+    db : Session
+        Database to query
+    sha256 : str
+        Hash of the environment specification
+
+    Returns
+    -------
+    orm.Specification | None
+        Specification, if found in the database; otherwise None
+    """
     filters = [orm.Specification.sha256 == sha256]
     return db.query(orm.Specification).filter(*filters).first()
 
