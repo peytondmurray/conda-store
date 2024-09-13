@@ -17,7 +17,7 @@ import yaml
 from filelock import FileLock
 from sqlalchemy.orm import Session
 
-from conda_store_server import api
+from conda_store_server import api, app
 from conda_store_server._internal import action, conda_utils, orm, schema, utils
 
 
@@ -179,7 +179,7 @@ or error in conda-store
                 set_build_failed(db, build)
 
 
-def build_conda_environment(db: Session, conda_store, build):
+def build_conda_environment(db: Session, conda_store: app.CondaStore, build: orm.Build):
     """Build a conda environment with set uid/gid/and permissions and
     symlink the build to a named environment
 

@@ -1,0 +1,29 @@
+shape: sequence_diagram
+
+server: Server
+worker: Worker
+server_api: conda_store_server.api
+sqlalchemy
+build: conda_store_server._internal.build
+# views_api: conda_store_server._internal.server.views.api
+# server_app: conda_store_server.app
+# server_auth: conda_store_server.server.auth
+# orm: conda_store_server._internal.orm
+# environment: conda_store_server._internal.environment
+# utils: conda_store_server._internal.utils
+
+
+server -> worker: dispatch\ntask_build_conda_environment
+
+"Get the build" {
+  worker -> server_api: get_build()
+  server_api -> sqlalchemy: db.query(orm.Build)
+  sqlalchemy -> server_api: Query containing Build
+  server_api -> worker: Build
+}
+
+
+worker -> build: build_conda_environment()
+"build_conda_environment" {
+
+}
