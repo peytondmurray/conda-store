@@ -10,6 +10,7 @@ import shutil
 import minio
 
 from minio.credentials.providers import Provider
+from sqlalchemy import Session
 from traitlets import Bool, Dict, List, Type, Unicode
 from traitlets.config import LoggingConfigurable
 
@@ -234,7 +235,15 @@ class LocalStorage(Storage):
         shutil.copyfile(filename, destination_filename)
         super().fset(db, build_id, key, filename, artifact_type)
 
-    def set(self, db, build_id, key, value, content_type=None, artifact_type=None):
+    def set(
+        self,
+        db: Session,
+        build_id: int,
+        key: str,
+        value: str,
+        content_type: str | None = None,
+        artifact_type: schema.BuildArtifactType | None = None,
+    ):
         destination_filename = os.path.join(self.storage_path, key)
         os.makedirs(os.path.dirname(destination_filename), exist_ok=True)
 

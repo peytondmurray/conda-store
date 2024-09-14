@@ -1,29 +1,187 @@
-shape: sequence_diagram
+task: task_build_conda_environment {
+  shape: sequence_diagram
 
-server: Server
-worker: Worker
-server_api: conda_store_server.api
-sqlalchemy
-build: conda_store_server._internal.build
+  server: Server
+  worker: Worker
+  server_api: conda_store_server.api
+  build: conda_store_server._internal.build
 # views_api: conda_store_server._internal.server.views.api
-# server_app: conda_store_server.app
+  server_app: conda_store_server.app
 # server_auth: conda_store_server.server.auth
-# orm: conda_store_server._internal.orm
+  orm: conda_store_server._internal.orm
 # environment: conda_store_server._internal.environment
-# utils: conda_store_server._internal.utils
+  action: conda_store_server._internal.action
+  utils: conda_store_server._internal.utils
+  storage: conda_store_server.storage
+  sqlalchemy
+  conda
+  conda_utils
+  conda_lock
+  subprocess
+  output
 
 
-server -> worker: dispatch\ntask_build_conda_environment
+  server -> worker: dispatch\ntask_build_conda_environment
 
-"Get the build" {
-  worker -> server_api: get_build()
-  server_api -> sqlalchemy: db.query(orm.Build)
-  sqlalchemy -> server_api: Query containing Build
-  server_api -> worker: Build
-}
+  "Get the build" {
+    worker -> server_api: get_build()
+    server_api -> sqlalchemy: db.query(orm.Build)
+    sqlalchemy -> server_api: Query containing Build
+    server_api -> worker: Build
+  }
 
+  worker -> build: build_conda_environment()
 
-worker -> build: build_conda_environment()
-"build_conda_environment" {
+  "build_conda_environment" {
 
+    build -> build: set_build_started()
+    build -> sqlalchemy: orm.Build.status = BUILDING
+
+    build -> orm: build_path()
+    orm -> build: conda_prefix
+
+    build -> build: "append_to_logs('starting build of conda env')"
+
+    "Get settings from the database" {
+      build -> server_app: CondaStore.get_settings()
+      server_app -> server_api: api.get_kvstore_key_values(db, prefix)
+      server_api -> sqlalchemy: db.query(orm.KeyValueStore)
+      sqlalchemy -> server_api: Query containing KeyValueStore
+      server_api -> server_app: "list[KeyValueStore]"
+      server_app -> build: schema.Settings
+    }
+
+    # Returns environment_prefix
+    build -> orm: environment_path()
+    orm -> server_app: conda_store.environment_directory
+    server_app -> orm: path for the symlink to the build directory
+    orm -> build: path for the symlink to the build directory
+
+    "If the build spec is a lockfile" {
+      build -> action: action_save_lockfile()
+      action -> output: 'conda-lock.yaml'
+    }
+
+    "If the build spec isn't a lockfile" {
+      build -> action: action_solve_lockfile()
+
+      action -> subprocess: 'conda info'
+      action -> subprocess: 'conda config --show'
+      action -> subprocess: 'conda config --show-sources'
+
+      action -> conda_lock: run_lock()
+      action -> build: lockfile dict
+    }
+
+    build -> storage: "set()\nSave the lockfile as a JSON blob to disk and to the database.\nIf configured, store this in S3 bucket via minio"
+
+    build -> action: action_fetch_and_extract_conda_packages() {
+      style: {
+        font-color: red
+      }
+    }
+
+    "action_fetch_and_extract_conda_packages\nloop over each package" {
+      action -> conda: "create PACKAGE_CACHE_MAGIC_FILE if it doesn't exist"
+      action -> conda: strip_pkg_extension(path: str)
+      conda -> action: path: str
+      action -> conda: conda_package_streaming.url.conda_reader_for_url()
+      conda -> action: (filename: str, conda_package_stream: Response.raw)
+      action -> conda: conda_package_handling.api.extract()
+      action -> conda: read_index_json()
+      conda -> action: "json_record: Dict[str, Any]"
+      action -> conda: getsize()
+      conda -> action: int
+      action -> conda: PackageCacheRecord.from_objects()
+      conda -> action: package_cache_record: PackageCacheRecord
+      action -> conda: PackageRecord.from_objects()
+      conda -> action: repodata_record: PackageRecord
+      action -> conda: write_as_json_to_file(repodata_file, repodata_record)
+    }
+
+    build -> action: action_install_lockfile()
+    "action_install_lockfile" {
+      action -> output: 'conda-lock.yml'
+      action -> conda_lock: 'python -m conda_lock install'
+    }
+
+    "If environment_prefix is not None" {
+      build -> utils: symlink()
+      utils -> output: symlink conda_prefix to environment_prefix
+    }
+
+    build -> action: action_set_conda_prefix_permissions()
+    action -> conda_utils: is_conda_prefix()
+    conda_utils -> action: bool
+    action -> utils: chmod
+    utils -> subprocess: chmod
+    action -> utils: chown
+    utils -> subprocess: chown
+
+    build -> action: action_add_conda_prefix_packages()
+    "action_add_conda_prefix_packages" {
+
+      action -> server_api: get_build()
+      "Get the new build" {
+        action -> server_api: get_build()
+        server_api -> sqlalchemy: db.query(orm.Build)
+        sqlalchemy -> server_api: Query containing Build
+        server_api -> action: Build
+      }
+
+      action -> action: list_conda_prefix_packages()
+      "list_conda_prefix_packages\nloop over each record": {
+        action -> output: "json.load(info/about.json)"
+        output -> action: "Dict[str, Any]"
+        action -> action: packages
+      }
+
+      "loop over packages" {
+        action -> server_api: create_or_ignore_conda_package()
+        server_api -> server_api: get_conda_channel()
+        server_api -> sqlalchemy: db.query(orm.CondaChannel)
+        sqlalchemy -> server_api: Query containing CondaChannel
+        server_api -> server_api: CondaChannel
+
+        "If there's no channel in the db" {
+          server_api -> server_api: create_conda_channel()
+          server_api -> sqlalchemy: db.add(orm.CondaChannel)
+        }
+
+        server_api -> server_api: get_conda_package()
+        server_api -> sqlalchemy: db.query(orm.CondaPackage)
+        sqlalchemy -> server_api: Query containing CondaPackage
+        server_api -> server_api: CondaPackage
+
+        "If there's no conda package in the db" {
+          server_api -> server_api: create_conda_package()
+          server_api -> sqlalchemy: db.add(orm.CondaPackage)
+        }
+
+        server_api -> server_api: get_conda_package_build()
+        server_api -> sqlalchemy: db.query(orm.CondaPackageBuild)
+        sqlalchemy -> server_api: Query containing CondaPackageBuild
+        server_api -> server_api: CondaPackageBuild
+
+        "If there's no conda package build" {
+          server_api -> server_api: create_conda_package_build()
+          server_api -> sqlalchemy: db.add(orm.CondaPackageBuild)
+        }
+
+        server_api -> action: conda_package_build: orm.CondaPackageBuild
+      }
+    }
+
+    build -> action: action_get_conda_prefix_stats()
+    "action_get_conda_prefix_stats" {
+      action -> conda_utils: is_conda_prefix()
+      conda_utils -> action: bool
+      action -> utils: disk_usage()
+      utils -> action: int
+      action -> build: "stats: Dict[str, Any]"
+    }
+
+    build -> build: set_build_completed()
+    build -> sqlalchemy: db.add(orm.BuildArtifact)
+  }
 }

@@ -9,6 +9,7 @@ import os
 import pathlib
 import shutil
 import sys
+import typing
 
 from functools import partial
 
@@ -41,6 +42,10 @@ from sqlalchemy.orm import (
 
 from conda_store_server._internal import conda_utils, schema, utils
 from conda_store_server._internal.environment import validate_environment
+
+
+if typing.TYPE_CHECKING:
+    from conda_store_server.app import CondaStore
 
 
 logger = logging.getLogger("orm")
@@ -261,7 +266,7 @@ class Build(Base):
         "BuildArtifact", back_populates="build", cascade="all, delete-orphan"
     )
 
-    def build_path(self, conda_store):
+    def build_path(self, conda_store: CondaStore) -> pathlib.Path:
         """Build path is the directory for the conda prefix used to
         build the environment
 
@@ -295,7 +300,7 @@ class Build(Base):
         else:
             return res
 
-    def environment_path(self, conda_store):
+    def environment_path(self, conda_store: CondaStore) -> pathlib.Path:
         """Environment path is the path for the symlink to the build
         path
 

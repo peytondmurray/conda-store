@@ -24,7 +24,7 @@ def action_solve_lockfile(
     # Avoids package compatibility issues, see:
     # https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html
     conda_flags: str = "--strict-channel-priority",
-):
+) -> typing.Dict[str, typing.Any]:
     environment_filename = pathlib.Path.cwd() / "environment.yaml"
     lockfile_filename = pathlib.Path.cwd() / "conda-lock.yaml"
 
