@@ -222,8 +222,13 @@ def task_build_conda_environment(self, build_id):
     conda_store = self.worker.conda_store
 
     with conda_store.session_factory() as db:
-        build = api.get_build(db, build_id)
-        build_conda_environment(db, conda_store, build)
+        import pyinstrument
+
+        with pyinstrument.Profiler() as pro:
+            build = api.get_build(db, build_id)
+            build_conda_environment(db, conda_store, build)
+
+        pro.write_html("/home/tmp/task_build_conda_environment.html")
 
 
 @shared_task(base=WorkerTask, name="task_build_conda_env_export", bind=True)

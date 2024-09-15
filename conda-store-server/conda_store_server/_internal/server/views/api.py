@@ -7,6 +7,7 @@ import datetime
 from typing import Any, Dict, List, Optional, TypedDict
 
 import pydantic
+import pyinstrument
 import yaml
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Query, Request
@@ -868,57 +869,64 @@ async def api_post_specification(
     environment_name: Optional[str] = Body("", embed=True),
     environment_description: Optional[str] = Body("", embed=True),
 ):
-    with conda_store.get_db() as db:
-        permissions = {Permissions.ENVIRONMENT_CREATE}
+    with pyinstrument.Profiler() as pro:
+        with conda_store.get_db() as db:
+            permissions = {Permissions.ENVIRONMENT_CREATE}
 
-        default_namespace = (
-            entity.primary_namespace if entity else conda_store.default_namespace
-        )
-
-        namespace_name = namespace or default_namespace
-        namespace = api.get_namespace(db, namespace_name)
-        if namespace is None:
-            permissions.add(Permissions.NAMESPACE_CREATE)
-
-        try:
-            specification = yaml.safe_load(specification)
-            if is_lockfile:
-                lockfile_spec = {
-                    "name": environment_name,
-                    "description": environment_description,
-                    "lockfile": specification,
-                }
-                specification = schema.LockfileSpecification.parse_obj(lockfile_spec)
-            else:
-                specification = schema.CondaSpecification.parse_obj(specification)
-        except yaml.error.YAMLError:
-            raise HTTPException(status_code=400, detail="Unable to parse. Invalid YAML")
-        except utils.CondaStoreError as e:
-            raise HTTPException(status_code=400, detail="\n".join(e.args[0]))
-        except pydantic.ValidationError as e:
-            raise HTTPException(status_code=400, detail=str(e))
-
-        auth.authorize_request(
-            request,
-            f"{namespace_name}/{specification.name}",
-            permissions,
-            require=True,
-        )
-
-        try:
-            build_id = conda_store.register_environment(
-                db,
-                specification,
-                namespace_name,
-                force=True,
-                is_lockfile=is_lockfile,
+            default_namespace = (
+                entity.primary_namespace if entity else conda_store.default_namespace
             )
-        except ValueError as e:
-            raise HTTPException(status_code=400, detail=str(e.args[0]))
-        except utils.CondaStoreError as e:
-            raise HTTPException(status_code=400, detail=str(e.message))
 
-        return {"status": "ok", "data": {"build_id": build_id}}
+            namespace_name = namespace or default_namespace
+            namespace = api.get_namespace(db, namespace_name)
+            if namespace is None:
+                permissions.add(Permissions.NAMESPACE_CREATE)
+
+            try:
+                specification = yaml.safe_load(specification)
+                if is_lockfile:
+                    lockfile_spec = {
+                        "name": environment_name,
+                        "description": environment_description,
+                        "lockfile": specification,
+                    }
+                    specification = schema.LockfileSpecification.parse_obj(
+                        lockfile_spec
+                    )
+                else:
+                    specification = schema.CondaSpecification.parse_obj(specification)
+            except yaml.error.YAMLError:
+                raise HTTPException(
+                    status_code=400, detail="Unable to parse. Invalid YAML"
+                )
+            except utils.CondaStoreError as e:
+                raise HTTPException(status_code=400, detail="\n".join(e.args[0]))
+            except pydantic.ValidationError as e:
+                raise HTTPException(status_code=400, detail=str(e))
+
+            auth.authorize_request(
+                request,
+                f"{namespace_name}/{specification.name}",
+                permissions,
+                require=True,
+            )
+
+            try:
+                build_id = conda_store.register_environment(
+                    db,
+                    specification,
+                    namespace_name,
+                    force=True,
+                    is_lockfile=is_lockfile,
+                )
+            except ValueError as e:
+                raise HTTPException(status_code=400, detail=str(e.args[0]))
+            except utils.CondaStoreError as e:
+                raise HTTPException(status_code=400, detail=str(e.message))
+
+    pro.write_html("/home/tmp/api_post_specification.html")
+
+    return {"status": "ok", "data": {"build_id": build_id}}
 
 
 @router_api.get("/build/", response_model=schema.APIListBuild)

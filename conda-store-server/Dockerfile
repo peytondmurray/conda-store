@@ -49,7 +49,9 @@ RUN printf 'channels: []\n' > /opt/conda/.condarc && \
     mkdir -p /opt/conda-store/envs && \
     chown ${user_no}:${user_no} /opt/conda-store/envs && \
     mkdir /.cache && \
-    chown ${user_no}:${user_no} /.cache
+    chown ${user_no}:${user_no} /.cache && \
+    mkdir /home/tmp && \
+    chown ${user_no}:${user_no} /home/tmp
 
 USER ${user_no}:${user_no}
 
