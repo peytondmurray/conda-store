@@ -56,7 +56,7 @@ def conda_store_validate_specification(
 def conda_store_validate_action(
     db: Session,
     conda_store: "CondaStore",
-    _namespace: str,
+    namespace: str,
     action: schema.Permissions,
 ) -> None:
     """Check that an environment can be created with the given permissions.
@@ -70,7 +70,7 @@ def conda_store_validate_action(
         Database containign settings and system metrics
     conda_store : "CondaStore"
         Application instance; used to get settings from the database
-    _namespace : str
+    namespace : str
         Namespace name; unused here
     action : schema.Permissions
         The action that is being taken

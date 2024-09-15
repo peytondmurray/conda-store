@@ -10,7 +10,7 @@ import shutil
 import minio
 
 from minio.credentials.providers import Provider
-from sqlalchemy import Session
+from sqlalchemy.orm import Session
 from traitlets import Bool, Dict, List, Type, Unicode
 from traitlets.config import LoggingConfigurable
 
