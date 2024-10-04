@@ -19,6 +19,7 @@ from sqlalchemy.orm import Session
 
 from conda_store_server import api
 from conda_store_server._internal import action, conda_utils, orm, schema, utils
+from conda_store_server.app import CondaStore
 
 
 class LoggedStream:
@@ -179,10 +180,17 @@ or error in conda-store
                 set_build_failed(db, build)
 
 
-def build_conda_environment(db: Session, conda_store, build):
-    """Build a conda environment with set uid/gid/and permissions and
-    symlink the build to a named environment
+def build_conda_environment(db: Session, conda_store: CondaStore, build: orm.Build):
+    """Build a conda environment and symlink the build to a named environment.
 
+    Parameters
+    ----------
+    db : Session
+        CondaStore app database
+    conda_store : CondaStore
+        CondaStore application instance
+    build : orm.Build
+        Build database entry from which an environment is to be created
     """
     try:
         set_build_started(db, build)

@@ -11,6 +11,7 @@ import shutil
 import sys
 
 from functools import partial
+from typing import TYPE_CHECKING
 
 from sqlalchemy import (
     JSON,
@@ -41,6 +42,10 @@ from sqlalchemy.orm import (
 
 from conda_store_server._internal import conda_utils, schema, utils
 from conda_store_server._internal.environment import validate_environment
+
+
+if TYPE_CHECKING:
+    from conda_store_server.app import CondaStore
 
 
 logger = logging.getLogger("orm")
@@ -261,10 +266,18 @@ class Build(Base):
         "BuildArtifact", back_populates="build", cascade="all, delete-orphan"
     )
 
-    def build_path(self, conda_store):
-        """Build path is the directory for the conda prefix used to
-        build the environment
+    def build_path(self, conda_store: CondaStore) -> pathlib.Path:
+        """Get the directory for the conda prefix used by this build.
 
+        Parameters
+        ----------
+        conda_store : CondaStore
+            Running conda-store application instance
+
+        Returns
+        -------
+        pathlib.Path
+            Path to the directory for the conda prefix of this build
         """
         # Uses local import to make sure BuildKey is initialized
         from conda_store_server import BuildKey
