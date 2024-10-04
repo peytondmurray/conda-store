@@ -49,3 +49,13 @@ repos:
         name: isort
         args: ["--profile", "black"]
         exclude: "conda-store-server/conda_store_server/action/__init__.py"
+
+  - repo: local
+    hooks:
+      - id: check-deps
+        name: Check that pyproject.toml dependencies match environment-dev.yaml dependencies
+        entry: python check_deps.py
+        pass_filenames: false
+        language: python
+        files: conda-store-server/pyproject.toml
+        additional_dependencies: ['tomli', 'pyyaml']
