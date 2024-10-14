@@ -1,81 +1,87 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.162 Electron/32.1.2 Safari/537.36" version="24.7.8">
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.178 Electron/32.2.0 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="Zd6lipVnDhVKCqFpEf9N">
-    <mxGraphModel dx="1346" dy="879" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1476" dy="1919" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="jSxoteHV-lkyygiH3CWS-1" value="conda-store" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="30" y="110" width="360" height="270" as="geometry" />
+        <mxCell id="jSxoteHV-lkyygiH3CWS-1" value="conda-store" style="swimlane;whiteSpace=wrap;html=1;fillColor=#452E61;fontColor=#ffffff;strokeColor=default;fillStyle=solid;swimlaneFillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="30" y="72" width="360" height="270" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-1" source="jSxoteHV-lkyygiH3CWS-3" target="jSxoteHV-lkyygiH3CWS-4">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-1" source="jSxoteHV-lkyygiH3CWS-3" target="jSxoteHV-lkyygiH3CWS-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-3" value="CLI" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-1">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-3" value="CLI" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-1" vertex="1">
           <mxGeometry x="190" y="150" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-1" source="jSxoteHV-lkyygiH3CWS-4" target="jSxoteHV-lkyygiH3CWS-3">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-1" source="jSxoteHV-lkyygiH3CWS-4" target="jSxoteHV-lkyygiH3CWS-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-4" value="Python API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-1">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-4" value="Python API" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-1" vertex="1">
           <mxGeometry x="190" y="60" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-5" value="Integration&lt;br&gt;Tests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-1">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-5" value="Integration&lt;br&gt;Tests" style="rounded=0;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-1" vertex="1">
           <mxGeometry x="20" y="110" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-2" value="conda-store-server" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="440" y="27" width="870" height="680" as="geometry" />
+        <mxCell id="jSxoteHV-lkyygiH3CWS-2" value="conda-store-server" style="swimlane;whiteSpace=wrap;html=1;fillStyle=solid;fillColor=#452E61;swimlaneFillColor=default;" parent="1" vertex="1">
+          <mxGeometry x="440" y="27" width="870" height="493" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-2" source="jSxoteHV-lkyygiH3CWS-9" target="jSxoteHV-lkyygiH3CWS-10">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-2" source="jSxoteHV-lkyygiH3CWS-9" target="jSxoteHV-lkyygiH3CWS-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-9" value="REST API&lt;br&gt;(FastAPI Server App)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-2">
-          <mxGeometry x="101" y="143" width="120" height="60" as="geometry" />
+        <mxCell id="jSxoteHV-lkyygiH3CWS-9" value="REST API&lt;br&gt;(FastAPI Server App)" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-2" vertex="1">
+          <mxGeometry x="101" y="105" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-2" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-9">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-2" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-31" value="Celery Worker" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-2">
-          <mxGeometry x="280" y="88" width="570" height="417" as="geometry" />
+        <mxCell id="jSxoteHV-lkyygiH3CWS-31" value="Celery Worker" style="swimlane;whiteSpace=wrap;html=1;fillColor=#008a00;fontColor=#ffffff;strokeColor=#005700;swimlaneFillColor=none;" parent="jSxoteHV-lkyygiH3CWS-2" vertex="1">
+          <mxGeometry x="280" y="50" width="570" height="417" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-14">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-30" value="Settings, Builds, Environments&lt;br&gt;Specifications, Packages, Channels, ..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="jSxoteHV-lkyygiH3CWS-19">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-30" value="Settings, Builds, Environments&lt;br&gt;Specifications, Packages, Channels, ..." style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="jSxoteHV-lkyygiH3CWS-19" vertex="1" connectable="0">
           <mxGeometry x="-0.0393" y="-1" relative="1" as="geometry">
             <mxPoint x="21" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-22" value="Lockfile,&lt;br&gt;Docker images,&lt;div&gt;Build logs&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-15">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-22" value="Lockfile,&lt;br&gt;Docker images,&lt;div&gt;Build logs&lt;/div&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-10" target="jSxoteHV-lkyygiH3CWS-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-10" value="Server Python API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-31">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-10" value="Server Python API" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" vertex="1">
           <mxGeometry x="70" y="55" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-14" target="jSxoteHV-lkyygiH3CWS-10">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-14" target="jSxoteHV-lkyygiH3CWS-10" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-14" value="Database&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22REST%20API%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22520%22%20y%3D%22170%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-31">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-14" value="Database&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start; text-wrap: nowrap;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%22REST%20API%22%20style%3D%22rounded%3D1%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22520%22%20y%3D%22170%22%20width%3D%22120%22%20height%3D%2260%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" vertex="1">
           <mxGeometry x="70" y="288" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-15" target="jSxoteHV-lkyygiH3CWS-23">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-15" target="jSxoteHV-lkyygiH3CWS-23" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-15" target="jSxoteHV-lkyygiH3CWS-24">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="jSxoteHV-lkyygiH3CWS-31" source="jSxoteHV-lkyygiH3CWS-15" target="jSxoteHV-lkyygiH3CWS-24" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-15" value="minio&lt;br&gt;object store" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-31">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-15" value="minio&lt;br&gt;object store" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" vertex="1">
           <mxGeometry x="347" y="55" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-23" value="Local storage" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-31">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-23" value="Local storage" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" vertex="1">
           <mxGeometry x="270" y="288" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-24" value="S3 Bucket" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-31">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-24" value="S3 Bucket" style="rounded=1;whiteSpace=wrap;html=1;" parent="jSxoteHV-lkyygiH3CWS-31" vertex="1">
           <mxGeometry x="420" y="288" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-12" value="Web requests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="jSxoteHV-lkyygiH3CWS-4" target="jSxoteHV-lkyygiH3CWS-9">
+        <mxCell id="D4e0CVNdSUlWR1ulKGKl-1" value="Integration&lt;br&gt;Tests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-2">
+          <mxGeometry x="101" y="215" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="D4e0CVNdSUlWR1ulKGKl-2" value="Unit&lt;br&gt;Tests" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="jSxoteHV-lkyygiH3CWS-2">
+          <mxGeometry x="101" y="315" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="jSxoteHV-lkyygiH3CWS-12" value="Web requests" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="jSxoteHV-lkyygiH3CWS-4" target="jSxoteHV-lkyygiH3CWS-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="jSxoteHV-lkyygiH3CWS-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="jSxoteHV-lkyygiH3CWS-9" target="jSxoteHV-lkyygiH3CWS-4">
+        <mxCell id="jSxoteHV-lkyygiH3CWS-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="jSxoteHV-lkyygiH3CWS-9" target="jSxoteHV-lkyygiH3CWS-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
