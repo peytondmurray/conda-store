@@ -77,15 +77,26 @@ def action_solve_lockfile(
 
 @action.action
 def action_save_lockfile(
-    context,
+    context: action.base.ActionContext,
     specification: schema.LockfileSpecification,
-):
-    # Note: this calls dict on specification so that the version field is
-    # part of the output
-    lockfile = specification.dict()["lockfile"]
-    lockfile_filename = pathlib.Path.cwd() / "conda-lock.yaml"
+) -> dict[str, typing.Any]:
+    """Save the lockfile in a LockfileSpecification to disk.
 
-    with lockfile_filename.open("w") as f:
-        json.dump(lockfile, f, cls=utils.CustomJSONEncoder)
+    Parameters
+    ----------
+    context : action.base.ActionContext
+        Context the action was run in
+    specification : schema.LockfileSpecification
+        Specification to write
 
-    return lockfile
+    Returns
+    -------
+    dict[str, typing.Any]
+        Dictionary containing a conda-lock - compliant lockfile specification
+
+    """
+    output = specification.lockfile.dict_for_output()
+    with open(pathlib.Path.cwd() / "conda-lock.yaml", "w") as f:
+        json.dump(output, f, cls=utils.CustomJSONEncoder)
+
+    return output
